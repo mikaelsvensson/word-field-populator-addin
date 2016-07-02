@@ -30,23 +30,24 @@ namespace WordFieldPopulatorAddin
                 t.Text = pair.Value;
                 t.Width = 300;
                 t.Tag = pair.Key;
-                t.TextChanged += FieldValue_TextChanged;
                 tableLayoutPanel1.Controls.Add(t);
             }
         }
 
-        private void FieldValue_TextChanged(object sender, EventArgs e)
+        private void buttonOk_Click(object sender, EventArgs e)
         {
-            var field = (TextBox)sender;
-            Values.Add(field.Tag.ToString(), field.Text);
+            foreach (var item in tableLayoutPanel1.Controls)
+            {
+                if (item is TextBox)
+                {
+                    var field = (TextBox)item;
+                    Values.Add(field.Tag.ToString(), field.Text);
+                }
+            }
+            Close();
         }
 
-        private void FieldsForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();
         }

@@ -59,7 +59,7 @@
             // 
             this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.button1.Image = global::WordFieldPopulatorAddin.Properties.Resources.edit_property_512;
-            this.button1.Label = "Fyll i fält och $parametrar";
+            this.button1.Label = "Fyll i värden";
             this.button1.Name = "button1";
             this.button1.ShowImage = true;
             this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);

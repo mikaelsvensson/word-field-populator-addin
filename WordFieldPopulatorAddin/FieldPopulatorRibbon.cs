@@ -36,15 +36,17 @@ namespace WordFieldPopulatorAddin
             {
                 var form = new FieldsForm(values);
                 form.ShowDialog();
-
-                extractors.ForEach(extractor => extractor.Update(nativeDocument, form.Values));
+                if (form.Values.Count > 0)
+                {
+                    extractors.ForEach(extractor => extractor.Update(nativeDocument, form.Values));
+                }
             }
             else
             {
                 System.Windows.Forms.MessageBox.Show(
-                    "Det finns inga $VARIABLER eller innehållskontroller för text i detta dokument.", 
-                    "Inga variabler eller fält", 
-                    System.Windows.Forms.MessageBoxButtons.OK, 
+                    "Det finns inga $VARIABLER eller innehållskontroller för text i detta dokument.",
+                    "Inga variabler eller fält",
+                    System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Information);
             }
 
