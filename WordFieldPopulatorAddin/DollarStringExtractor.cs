@@ -14,7 +14,7 @@ namespace WordFieldPopulatorAddin
             f.ClearFormatting();
             f.Forward = true;
             var sep = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
-            f.Text = "$[A-Z]{1" + sep + "}";
+            f.Text = "$[0-z]{1" + sep + "}";
 
             f.MatchWildcards = true;
             f.Execute();

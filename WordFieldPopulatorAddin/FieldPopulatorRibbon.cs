@@ -21,12 +21,11 @@ namespace WordFieldPopulatorAddin
             Document nativeDocument = Globals.ThisAddIn.Application.ActiveDocument;
             Microsoft.Office.Tools.Word.Document vstoDocument = Globals.Factory.GetVstoObject(nativeDocument);
 
-
-            var extractors = new List<IFieldExtractor>(new IFieldExtractor[] { new DollarStringExtractor(), new ContentControlExtractor() });
+            var extractors = new List<IFieldExtractor>(new IFieldExtractor[] { new StringFormatExtractor(), new DollarStringExtractor(), new ContentControlExtractor() });
 
             var clipDict = GetValuesFromClipboard();
 
-            var keys = extractors.SelectMany(extractor => extractor.Get(nativeDocument));
+            var keys = extractors.SelectMany(extractor => extractor.Get(nativeDocument)).Distinct();
 
             IDictionary<string, string> values = keys.ToDictionary(
                 k => k,
